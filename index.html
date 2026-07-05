@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR - América Latina sin Sombras</title>
+    <!-- Importar model-viewer -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
+    <style>
+        body { margin: 0; background: #FAF3E0; font-family: sans-serif; }
+        model-viewer { width: 100vw; height: 100vh; background-color: transparent; }
+        .instruction {
+            position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+            background: rgba(0,0,0,0.7); color: white; padding: 10px 20px;
+            border-radius: 20px; pointer-events: none; text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 
+      src: Tu modelo 3D (.glb)
+      ar: Activa modo realidad aumentada
+      camera-controls: Permite rotar/zoom antes de entrar a AR
+      ar-modes: Prioriza WebXR (nativo) > Scene Viewer (Android) > Quick Look (iOS)
+    -->
+    <model-viewer 
+        src="assets/ces-modelo.glb" 
+        ios-src="assets/ces-modelo.usdz"
+        alt="Círculo Económico Social 3D"
+        ar 
+        ar-modes="webxr scene-viewer quick-look"
+        camera-controls 
+        auto-rotate
+        shadow-intensity="1">
+        
+        <div class="instruction"> Apunta al mapa del Capítulo 10 para ver el CES</div>
+        
+        <!-- Botón personalizado para activar AR si el navegador no lo hace automático -->
+        <button slot="ar-button" style="position:absolute; top:20px; right:20px; background:white; border:none; padding:10px; border-radius:50%;">
+            🥽 Ver en AR
+        </button>
+    </model-viewer>
+
+</body>
+</html>
